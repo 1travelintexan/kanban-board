@@ -13,17 +13,39 @@ import UpdateItem from "./pages/UpdateItem";
 import listJSON from "./list.json";
 
 function App() {
-  const [list, setList] = useState(listJSON);
-
+  const [list, setList] = useState(
+    listJSON.filter((e) => e.status === "To Do")
+  );
+  const [inProgress, setInProgress] = useState(
+    listJSON.filter((e) => e.status === "In Progress")
+  );
+  const [finished, setFinished] = useState(
+    listJSON.filter((e) => e.status === "Done")
+  );
   return (
     <>
       <Navbar />
       <div className="main-container">
         <Sidebar />
         <Routes>
-          <Route path="/" element={<ItemsList list={list} />} />
+          <Route
+            path="/"
+            element={
+              <ItemsList
+                list={list}
+                setList={setList}
+                inProgress={inProgress}
+                setInProgress={setInProgress}
+                finished={finished}
+                setFinished={setFinished}
+              />
+            }
+          />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/create" element={<CreateItem />} />
+          <Route
+            path="/create"
+            element={<CreateItem setList={setList} list={list} />}
+          />
           <Route path="/update" element={<UpdateItem />} />
         </Routes>
       </div>

@@ -3,7 +3,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 10px 20px;
 }
 nav img {
   height: 6rem;
@@ -45,7 +45,57 @@ nav h1 {
   width: 88vw;
   min-height: 70vh;
   padding: 20px;
-  background-color: rgb(0, 119, 79);
+  background-color: rgb(38, 51, 95);
+  display: flex;
+  justify-content: space-around;
+}
+.item-card-container {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.item-card {
+  width: 15vw;
+  border: 1px solid black;
+  border-radius: 3rem;
+  padding: 10px;
+  margin: 10px;
+}
+.in-progress-landing-container {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.in-progress-landing {
+  border: 1px dashed black;
+  width: 20vw;
+  height: 30vh;
+  border-radius: 1rem;
+  background-color: rgb(80, 78, 78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.completed-landing-container {
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.completed-landing {
+  border: 1px dashed black;
+  width: 20vw;
+  height: 30vh;
+  border-radius: 1rem;
+  background-color: rgb(80, 78, 78);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .footer {
   height: 10vh;
