@@ -35,7 +35,11 @@ function CreateItem({ setList, list }) {
         </label>
         <label>
           Priority:
-          <input name="priority" type="text" onChange={handleChange} />
+          <select name="priority" type="text" onChange={handleChange}>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+          </select>
         </label>
         <button>Create</button>
       </form>

@@ -22,6 +22,7 @@ function App() {
   const [finished, setFinished] = useState(
     listJSON.filter((e) => e.status === "Done")
   );
+  console.log("todo", list);
   return (
     <>
       <Navbar />

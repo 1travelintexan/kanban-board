@@ -18,16 +18,20 @@ function ItemsList({
   };
   const handleOnDrop = (e) => {
     const movedItemId = e.dataTransfer.getData("todo");
-    console.log("dropped", movedItemId);
     const filteredItems = list.filter((e) => e.id !== movedItemId);
     setList(filteredItems);
     const movedItem = list.find((e) => e.id === movedItemId);
-    setInProgress([movedItem, ...inProgress]);
+    const landing = e.target.id;
+    if (landing === "in-progress") {
+      setInProgress([movedItem, ...inProgress]);
+    } else if (landing === "completed") {
+      setFinished([movedItem, ...finished]);
+    }
   };
   return (
     <div className="items-list-container">
       <div className="item-card-container">
-        <h2>Things to do:</h2>
+        <h2 className="headings">Things to do:</h2>
         {list &&
           list.map((thing) => (
             <div
@@ -36,38 +40,52 @@ function ItemsList({
               draggable
               onDragStart={(e) => handleOnDrag(e, thing)}
             >
-              <h3>Title: {thing.title}</h3>
+              <h3> {thing.title}</h3>
             </div>
           ))}
       </div>
-      <div
-        className="in-progress-landing-container"
-        onDragOver={handleDragOver}
-        onDrop={handleOnDrop}
-      >
-        <h2>In Progress:</h2>
-        <div className="in-progress-landing">
-          <img src={dropFilesImg} alt="drop files logo" />
+      <div className="in-progress-landing-container">
+        <h2 className="headings">In Progress:</h2>
+        <div
+          className="in-progress-landing"
+          onDragOver={handleDragOver}
+          onDrop={handleOnDrop}
+        >
+          <img src={dropFilesImg} alt="drop files logo" id="in-progress" />
         </div>
         {inProgress &&
           inProgress.map((e) => {
             return (
-              <div key={e.id}>
-                <h3>Title: {e.title}</h3>
+              <div
+                key={e.id}
+                className="item-card"
+                draggable
+                onDragStart={(e) => handleOnDrag(e, thing)}
+              >
+                <h3>{e.title}</h3>
               </div>
             );
           })}
       </div>
       <div className="completed-landing-container">
-        <h2>Completed:</h2>
-        <div className="completed-landing">
-          <img src={dropFilesImg} alt="drop files logo" />
+        <h2 className="headings">Completed:</h2>
+        <div
+          className="completed-landing"
+          onDragOver={handleDragOver}
+          onDrop={handleOnDrop}
+        >
+          <img src={dropFilesImg} alt="drop files logo" id="completed" />
         </div>
         {finished &&
           finished.map((e) => {
             return (
-              <div key={e.id}>
-                <h3>Title: {e.title}</h3>
+              <div
+                key={e.id}
+                className="item-card"
+                draggable
+                onDragStart={(e) => handleOnDrag(e, thing)}
+              >
+                <h3> {e.title}</h3>
               </div>
             );
           })}
